@@ -96,9 +96,10 @@ extension HomeViewController: UISearchBarDelegate {
     }
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
+        self.viewModel.leagueToSearch = self.searchQuery
         self.searchBar.setShowsCancelButton(false, animated: true)
         self.autocompleteTableView.isHidden = true
+        searchBar.resignFirstResponder()
     }
 
 }

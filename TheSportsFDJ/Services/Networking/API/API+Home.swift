@@ -30,20 +30,21 @@ extension API.HomeController: NetworkUrl {
         switch self {
         case .getAvailableLeagueList:
             return self.leaguesUrl
-        case .getAllTeamsList(league: let league):
-            let query = league.replacingOccurrences(of: " ", with: "%20")
-            return self.teamsUrl + "?l=\(query)"
+        case .getAllTeamsList:
+            return self.teamsUrl
         }
     }
     
     var encoding: ParameterEncoding {
-        return JSONEncoding.default
+        return URLEncoding.default
     }
     
     var parameters: Parameters? {
         switch self {
-        case .getAvailableLeagueList, .getAllTeamsList:
+        case .getAvailableLeagueList:
             return nil
+        case .getAllTeamsList(let query):
+            return ["l":query]
         }
     }
     

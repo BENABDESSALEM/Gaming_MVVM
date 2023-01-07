@@ -27,20 +27,19 @@ extension API.DetailsController: NetworkUrl {
     
     var path: String {
         switch self {
-        case .getTeamDetails(team: let team):
-            let query = team.replacingOccurrences(of: " ", with: "%20")
-            return self.teamDetailsUrl + "?t=\(query)"
+        case .getTeamDetails:
+            return self.teamDetailsUrl
         }
     }
     
     var encoding: ParameterEncoding {
-        return JSONEncoding.default
+        return URLEncoding.default
     }
     
     var parameters: Parameters? {
         switch self {
-        case .getTeamDetails:
-            return nil
+        case .getTeamDetails(let team):
+            return ["t":team]
         }
     }
     
