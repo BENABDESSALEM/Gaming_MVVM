@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Details View Controller-->
+        <scene sceneID="s0d-6b-0kx">
+            <objects>
+                <viewController storyboardIdentifier="DetailsViewController" id="Y6W-OH-hqX" customClass="DetailsViewController" customModule="TheSportsFDJ" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5EZ-qb-Rvc">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O3V-03-O2Y">
+                                <rect key="frame" x="0.0" y="44" width="414" height="63"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Team name" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aUU-iK-sqr">
+                                        <rect key="frame" x="153" y="21" width="108" height="21"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="21" id="K8q-CC-edq"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hvg-cx-9mC">
+                                        <rect key="frame" x="0.0" y="8" width="71" height="47"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="47" id="CGf-sd-giQ"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" image="chevron.backward" catalog="system" title="Back">
+                                            <fontDescription key="titleFontDescription" type="system" pointSize="15"/>
+                                        </buttonConfiguration>
+                                        <connections>
+                                            <action selector="backButtonTapped:" destination="Y6W-OH-hqX" eventType="touchUpInside" id="eb7-ym-kLX"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="Hvg-cx-9mC" firstAttribute="leading" secondItem="O3V-03-O2Y" secondAttribute="leading" id="ExT-2m-Okg"/>
+                                    <constraint firstItem="aUU-iK-sqr" firstAttribute="centerY" secondItem="O3V-03-O2Y" secondAttribute="centerY" id="bDj-2G-LDi"/>
+                                    <constraint firstAttribute="height" constant="63" id="fSK-W2-pBB"/>
+                                    <constraint firstItem="aUU-iK-sqr" firstAttribute="centerX" secondItem="O3V-03-O2Y" secondAttribute="centerX" id="ish-Jp-kDl"/>
+                                    <constraint firstItem="Hvg-cx-9mC" firstAttribute="top" secondItem="O3V-03-O2Y" secondAttribute="top" constant="8" id="kGQ-iF-n23"/>
+                                    <constraint firstAttribute="bottom" secondItem="Hvg-cx-9mC" secondAttribute="bottom" constant="8" id="v2L-yr-e9N"/>
+                                </constraints>
+                            </view>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="cvf-o7-air">
+                                <rect key="frame" x="0.0" y="107" width="414" height="789"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="Y6W-OH-hqX" id="fmp-Zh-9AV"/>
+                                    <outlet property="delegate" destination="Y6W-OH-hqX" id="NOK-yf-c9b"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="vDu-zF-Fre"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="O3V-03-O2Y" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="5Lp-2J-5AY"/>
+                            <constraint firstAttribute="trailing" secondItem="cvf-o7-air" secondAttribute="trailing" id="C94-vt-gyf"/>
+                            <constraint firstItem="cvf-o7-air" firstAttribute="leading" secondItem="vDu-zF-Fre" secondAttribute="leading" id="GdK-Oa-4yB"/>
+                            <constraint firstItem="O3V-03-O2Y" firstAttribute="trailing" secondItem="vDu-zF-Fre" secondAttribute="trailing" id="KPD-6g-Igt"/>
+                            <constraint firstItem="O3V-03-O2Y" firstAttribute="top" secondItem="vDu-zF-Fre" secondAttribute="top" id="chh-Hn-leb"/>
+                            <constraint firstItem="cvf-o7-air" firstAttribute="top" secondItem="O3V-03-O2Y" secondAttribute="bottom" id="d9O-uQ-u9v"/>
+                            <constraint firstAttribute="bottom" secondItem="cvf-o7-air" secondAttribute="bottom" id="hS2-Ft-gUV"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="detailsTableView" destination="cvf-o7-air" id="eco-1e-xjP"/>
+                        <outlet property="teamTitleLabel" destination="aUU-iK-sqr" id="Lih-DL-mGw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="34.782608695652179" y="79.6875"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="chevron.backward" catalog="system" width="96" height="128"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
