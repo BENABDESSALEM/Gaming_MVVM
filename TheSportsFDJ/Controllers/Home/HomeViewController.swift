@@ -37,6 +37,7 @@ class HomeViewController: BaseViewController {
         leaguesCollectionView.setCollectionViewLayout(layout, animated: false)
         leaguesCollectionView.register(HomeCollectionViewCell.nib(), forCellWithReuseIdentifier: HomeCollectionViewCell.identifier)
         autocompleteTableView.register(AutoCompleteTableViewCell.nib(), forCellReuseIdentifier: AutoCompleteTableViewCell.identifier)
+        searchBar.setShowsCancelButton(false, animated: true)
     }
     
     func initViewModels() {
@@ -90,6 +91,7 @@ extension HomeViewController: UISearchBarDelegate {
         self.searchQuery = ""
         self.searchBar.text = ""
         self.autocompleteTableView.isHidden = true
+        self.searchBar.setShowsCancelButton(false, animated: true)
         searchBar.resignFirstResponder()
     }
     
