@@ -15,6 +15,10 @@ target 'TheSportsFDJ' do
 
   target 'TheSportsFDJUITests' do
     inherit! :search_paths
+    # Networking
+    pod 'Alamofire', '~> 4.8.0'
+    # UI
+    pod 'UIWindowTransitions'
   end
 
 end
