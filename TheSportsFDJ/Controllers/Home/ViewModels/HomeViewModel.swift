@@ -10,44 +10,31 @@ import Combine
 
 class HomeViewModel: BaseViewModel {
     
+    private let apiService: HomeServiceProtocol
     @Published var searchQuery = ""
-    private var subscriptions = Set<AnyCancellable>()
-
+    var subscriptions = Set<AnyCancellable>()
     var reloadTableData: (() -> Void)?
     var reloadCollectionData: (() -> Void)?
     var leagues = [League]()
-    var teams = [Team]() {
-        didSet {
-            reloadCollectionData?()
-        }
-    }
-    var filtredLeagues = [League]() {
-        didSet {
-            reloadTableData?()
-        }
-    }
-    var leagueToSearch = String() {
-        didSet {
-            getAllTeams(querySearch: leagueToSearch)
-        }
+    var isSuccessPresented = false
+    var teams = [Team]() {didSet{reloadCollectionData?()}}
+    var filtredLeagues = [League]() {didSet{reloadTableData?()}}
+    var leagueToSearch = String() {didSet{getAllTeams(querySearch: leagueToSearch)}}
+    
+    init(apiService:HomeServiceProtocol = HomeService()) {
+        self.apiService = apiService
     }
     
-    override init() {
-        super.init()
-        self.getLeaguesList()
-        self.bindSearchQuery()
-     }
-    
-    private func getLeaguesList() {
-        ApiCall.Home.getLeaguesList(onSuccess: self.onSuccess, onError: self.onFail)
+    func getLeaguesList() {
+        apiService.getLeaguesList(onSuccess: self.onSuccess, onError: self.onFail)
     }
     
-    private func getAllTeams(querySearch:String){
+    func getAllTeams(querySearch:String){
         self.isLoading = true
-        ApiCall.Home.getAllTeams(querySearch: querySearch, onSuccess: self.onSuccess, onError: self.onFail)
+        apiService.getAllTeams(querySearch: querySearch, onSuccess: self.onSuccess, onError: self.onFail)
     }
     
-    private func bindSearchQuery() {
+    func bindSearchQuery() {
            $searchQuery
                .receive(on: RunLoop.main)
                .removeDuplicates()
@@ -68,14 +55,15 @@ class HomeViewModel: BaseViewModel {
 extension HomeViewModel {
     // MARK: WS Callbacks
     
-    private func onSuccess(_ response: AllLeaguesResponse?) {
+    func onSuccess(_ response: AllLeaguesResponse?) {
         guard let response = response else { return }
         if let leaguesList = response.leagues {
             leagues = leaguesList
+            isSuccessPresented = true
         }
     }
     
-    private func onSuccess(_ response: SearchAllTeamsResponse?) {
+    func onSuccess(_ response: SearchAllTeamsResponse?) {
         self.isLoading = false
         guard let response = response else { return }
         if let allTeamsList = response.teams {
@@ -86,10 +74,12 @@ extension HomeViewModel {
                return (teamName1.localizedCaseInsensitiveCompare(teamName2) == .orderedDescending)
             })
             teams = lst
+            isSuccessPresented = true
         }
     }
     
-    private func onFail(_ error: TheSportsError?) {
+    func onFail(_ error: TheSportsError?) {
         self.isLoading = false
+        isSuccessPresented = false
     }
 }

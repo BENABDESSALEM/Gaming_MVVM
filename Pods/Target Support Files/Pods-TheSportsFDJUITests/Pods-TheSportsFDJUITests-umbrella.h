@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_TheSportsFDJ_TheSportsFDJUITestsVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_TheSportsFDJ_TheSportsFDJUITestsVersionString[];
+FOUNDATION_EXPORT double Pods_TheSportsFDJUITestsVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_TheSportsFDJUITestsVersionString[];
 

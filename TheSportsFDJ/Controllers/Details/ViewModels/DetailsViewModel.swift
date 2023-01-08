@@ -9,18 +9,17 @@ import Foundation
 
 class DetailsViewModel: BaseViewModel {
     
+    private let apiService: DetailsServiceProtocol
     var reloadTableData: (() -> Void)?
     @Published fileprivate var myBoolean:Bool = false
+    var isSuccessPresented = false
     var query: String?
     var teamDetail: Team?
     var teamName: String?
-    var items = [BaseCellViewModel]() {
-        didSet {
-            self.reloadTableData?()
-        }
-    }
-
-    init(query: String) {
+    var items = [BaseCellViewModel](){didSet{self.reloadTableData?()}}
+    
+    init(apiService:DetailsServiceProtocol = DetailsService(),query: String) {
+        self.apiService = apiService
         self.query = query
     }
     
@@ -44,7 +43,7 @@ class DetailsViewModel: BaseViewModel {
     
     func getTeamDetails(){
         self.isLoading = true
-        ApiCall.Details.getTeamDetails(querySearch: self.query ?? "", onSuccess: self.onSuccess, onError: self.onFail)
+        apiService.getTeamDetails(querySearch: self.query ?? "", onSuccess: self.onSuccess, onError: self.onFail)
     }
 }
 
@@ -58,10 +57,12 @@ extension DetailsViewModel {
             teamDetail = teamsList.first
             updateItems()
         }
+        isSuccessPresented = true
     }
     
     private func onFail(_ error: TheSportsError?) {
         print(error.debugDescription)
         self.isLoading = false
+        isSuccessPresented = false
     }
 }

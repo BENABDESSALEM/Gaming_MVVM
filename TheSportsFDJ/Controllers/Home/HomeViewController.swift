@@ -42,6 +42,7 @@ class HomeViewController: BaseViewController {
     
     func initViewModels() {
         viewModel = HomeViewModel()
+        viewModel.getLeaguesList()
         viewModel.reloadTableData = { [weak self] in
             DispatchQueue.main.async {
                 self?.autocompleteTableView.reloadData()
@@ -66,6 +67,7 @@ class HomeViewController: BaseViewController {
     }
     
     func setBindings(){
+        viewModel.bindSearchQuery()
         $searchQuery
             .receive(on: RunLoop.main)
             .removeDuplicates()
