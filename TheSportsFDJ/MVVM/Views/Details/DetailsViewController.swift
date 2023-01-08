@@ -9,9 +9,11 @@ import UIKit
 
 class DetailsViewController: BaseViewController {
 
+    // MARK: - @IBOutlets.
+
     @IBOutlet weak var detailsTableView: UITableView!
     @IBOutlet weak var teamTitleLabel: UILabel!
-    
+
     internal static func instantiate(with viewModel: DetailsViewModel) -> DetailsViewController {
         let vc = StoryboardScene.Details.detailsViewController.instantiate()
         vc.viewModel = viewModel
@@ -53,6 +55,8 @@ class DetailsViewController: BaseViewController {
     }
 }
 
+// MARK: - @UITableViewDataSource.
+
 extension DetailsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return viewModel.items.count
@@ -72,6 +76,8 @@ extension DetailsViewController: UITableViewDataSource {
         return UITableViewCell()
     }
 }
+
+// MARK: - @UITableViewDelegate.
 
 extension DetailsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

@@ -52,8 +52,9 @@ class HomeViewModel: BaseViewModel {
     }
 }
 
+// MARK: WS Callbacks
+
 extension HomeViewModel {
-    // MARK: WS Callbacks
     
     func onSuccess(_ response: AllLeaguesResponse?) {
         guard let response = response else { return }

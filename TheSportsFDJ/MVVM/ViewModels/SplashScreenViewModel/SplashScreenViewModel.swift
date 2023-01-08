@@ -8,7 +8,7 @@
 import Foundation
 
 class SplashScreenViewModel : BaseViewModel {
-    
+    // Launch the initial screen.
     func startApp(){
         NavigationHelper.shared.startApp()
     }

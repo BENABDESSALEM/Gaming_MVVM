@@ -47,8 +47,9 @@ class DetailsViewModel: BaseViewModel {
     }
 }
 
+// MARK: WS Callbacks
+
 extension DetailsViewModel {
-    // MARK: WS Callbacks
     
     private func onSuccess(_ response: SearchAllTeamsResponse?) {
         self.isLoading = false

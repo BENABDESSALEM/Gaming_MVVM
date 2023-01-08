@@ -9,13 +9,17 @@ import UIKit
 
 class HomeViewController: BaseViewController {
 
+    // MARK: - @IBOutlets.
+
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var leaguesCollectionView: UICollectionView!
     @IBOutlet weak var autocompleteTableView: UITableView!
     @IBOutlet weak var tableViewHeight: NSLayoutConstraint!
-    
+    // MARK: - Variable.
+
     var viewModel: HomeViewModel!
     var searchActive : Bool = false
+    
     @Published private(set) var searchQuery = ""
     
     override func viewDidLoad() {
@@ -77,6 +81,8 @@ class HomeViewController: BaseViewController {
     }
 }
 
+// MARK: - UISearchBarDelegate
+
 extension HomeViewController: UISearchBarDelegate {
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
@@ -106,6 +112,8 @@ extension HomeViewController: UISearchBarDelegate {
 
 }
 
+// MARK: - UICollectionViewDelegateFlowLayout
+
 extension HomeViewController: UICollectionViewDelegateFlowLayout{
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
@@ -116,6 +124,8 @@ extension HomeViewController: UICollectionViewDelegateFlowLayout{
         return CGSize(width: width, height: width+30)
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension HomeViewController: UICollectionViewDataSource {
     
@@ -137,6 +147,8 @@ extension HomeViewController: UICollectionViewDataSource {
         self.navigationController?.pushViewController(vc, animated: true)
     }
 }
+
+// MARK: - UITableViewDataSource
 
 extension HomeViewController : UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -161,6 +173,8 @@ extension HomeViewController : UITableViewDataSource {
         self.searchBar.setShowsCancelButton(false, animated: true)
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension HomeViewController : UITableViewDelegate {
     
