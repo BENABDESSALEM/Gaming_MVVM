@@ -55,7 +55,6 @@
 		DB5660E229699C79002046F0 /* DescriptionTeamTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = DB5660E029699C79002046F0 /* DescriptionTeamTableViewCell.xib */; };
 		DB5660E429699CDC002046F0 /* DescriptionTableViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5660E329699CDC002046F0 /* DescriptionTableViewModel.swift */; };
 		DB5660E82969C140002046F0 /* LoadingHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5660E72969C140002046F0 /* LoadingHelper.swift */; };
-		DB5660EA2969CB1A002046F0 /* Observable.swift in Sources */ = {isa = PBXBuildFile; fileRef = DB5660E92969CB1A002046F0 /* Observable.swift */; };
 		DBB4E1C5296B438800F27666 /* HomeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4E1C4296B438800F27666 /* HomeService.swift */; };
 		DBB4E1C7296B43B400F27666 /* DetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4E1C6296B43B400F27666 /* DetailsService.swift */; };
 		DBB4E1C9296B445200F27666 /* TestApiHomeServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = DBB4E1C8296B445200F27666 /* TestApiHomeServices.swift */; };
@@ -139,7 +138,6 @@
 		DB5660E029699C79002046F0 /* DescriptionTeamTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DescriptionTeamTableViewCell.xib; sourceTree = "<group>"; };
 		DB5660E329699CDC002046F0 /* DescriptionTableViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DescriptionTableViewModel.swift; sourceTree = "<group>"; };
 		DB5660E72969C140002046F0 /* LoadingHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingHelper.swift; sourceTree = "<group>"; };
-		DB5660E92969CB1A002046F0 /* Observable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observable.swift; sourceTree = "<group>"; };
 		DBB4E1C4296B438800F27666 /* HomeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeService.swift; sourceTree = "<group>"; };
 		DBB4E1C6296B43B400F27666 /* DetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsService.swift; sourceTree = "<group>"; };
 		DBB4E1C8296B445200F27666 /* TestApiHomeServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestApiHomeServices.swift; sourceTree = "<group>"; };
@@ -229,11 +227,10 @@
 			children = (
 				DB56604829673C46002046F0 /* AppDelegate.swift */,
 				DB56607829673DCC002046F0 /* Config */,
-				DB56607929673DED002046F0 /* Controllers */,
+				DB56607929673DED002046F0 /* MVVM */,
 				DB56607A29673E1B002046F0 /* Storyboards */,
 				DB56607B29673E5B002046F0 /* Helpers */,
 				DB56607E29673E97002046F0 /* Resources */,
-				DB56607D29673E85002046F0 /* Models */,
 				DB56607C29673E74002046F0 /* Services */,
 				DB5660CC2968E23D002046F0 /* Utilities */,
 				DB56607F29673FD6002046F0 /* SwiftGen */,
@@ -271,15 +268,14 @@
 			path = Config;
 			sourceTree = "<group>";
 		};
-		DB56607929673DED002046F0 /* Controllers */ = {
+		DB56607929673DED002046F0 /* MVVM */ = {
 			isa = PBXGroup;
 			children = (
-				DB5660AE29677F23002046F0 /* SplashScreen */,
-				DB5660A729677697002046F0 /* BaseViewController */,
-				DB56609B29677040002046F0 /* Home */,
-				DB56609C29677067002046F0 /* Details */,
+				DB56607D29673E85002046F0 /* Models */,
+				DBB4E1D0296B4F9000F27666 /* Views */,
+				DBB4E1D1296B4FBD00F27666 /* ViewModels */,
 			);
-			path = Controllers;
+			path = MVVM;
 			sourceTree = "<group>";
 		};
 		DB56607A29673E1B002046F0 /* Storyboards */ = {
@@ -298,7 +294,6 @@
 				DB56608629674221002046F0 /* ParseHelper.swift */,
 				DB5660AC29677B2E002046F0 /* NavigationHelper.swift */,
 				DB5660E72969C140002046F0 /* LoadingHelper.swift */,
-				DB5660E92969CB1A002046F0 /* Observable.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -388,7 +383,6 @@
 			isa = PBXGroup;
 			children = (
 				DB56609D296770A5002046F0 /* HomeViewController.swift */,
-				DB5660D429698B76002046F0 /* ViewModels */,
 				DB5660B32968236F002046F0 /* HomeCell */,
 			);
 			path = Home;
@@ -398,7 +392,6 @@
 			isa = PBXGroup;
 			children = (
 				DB5660A12967719E002046F0 /* DetailsViewController.swift */,
-				DB5660D629698BCB002046F0 /* ViewModels */,
 				DB5660D529698BB3002046F0 /* DetailsCell */,
 			);
 			path = Details;
@@ -408,8 +401,6 @@
 			isa = PBXGroup;
 			children = (
 				DB5660A8296776D4002046F0 /* BaseViewController.swift */,
-				DB5660AA296776F8002046F0 /* BaseViewModel.swift */,
-				DB5660C82968D158002046F0 /* BaseCellViewModel.swift */,
 			);
 			path = BaseViewController;
 			sourceTree = "<group>";
@@ -418,7 +409,6 @@
 			isa = PBXGroup;
 			children = (
 				DB5660AF29677F5F002046F0 /* SplashScreenViewController.swift */,
-				DB5660B129677F89002046F0 /* SplashScreenViewModel.swift */,
 			);
 			path = SplashScreen;
 			sourceTree = "<group>";
@@ -484,14 +474,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		DB5660D429698B76002046F0 /* ViewModels */ = {
+		DB5660D429698B76002046F0 /* HomeViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				DB56609F296770D1002046F0 /* HomeViewModel.swift */,
 				DB5660C62968CF92002046F0 /* LeagueTableViewModel.swift */,
 				DB5660CA2968E080002046F0 /* TeamCollectionViewModel.swift */,
 			);
-			path = ViewModels;
+			path = HomeViewModels;
 			sourceTree = "<group>";
 		};
 		DB5660D529698BB3002046F0 /* DetailsCell */ = {
@@ -503,14 +493,14 @@
 			path = DetailsCell;
 			sourceTree = "<group>";
 		};
-		DB5660D629698BCB002046F0 /* ViewModels */ = {
+		DB5660D629698BCB002046F0 /* DetailsViewModels */ = {
 			isa = PBXGroup;
 			children = (
 				DB5660A3296771CF002046F0 /* DetailsViewModel.swift */,
 				DB5660DC296990F9002046F0 /* InfoTableViewModel.swift */,
 				DB5660E329699CDC002046F0 /* DescriptionTableViewModel.swift */,
 			);
-			path = ViewModels;
+			path = DetailsViewModels;
 			sourceTree = "<group>";
 		};
 		DB5660D729698FCD002046F0 /* InfoTeamCell */ = {
@@ -529,6 +519,45 @@
 				DB5660E029699C79002046F0 /* DescriptionTeamTableViewCell.xib */,
 			);
 			path = DescriptionTeamCell;
+			sourceTree = "<group>";
+		};
+		DBB4E1D0296B4F9000F27666 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DB5660A729677697002046F0 /* BaseViewController */,
+				DB5660AE29677F23002046F0 /* SplashScreen */,
+				DB56609B29677040002046F0 /* Home */,
+				DB56609C29677067002046F0 /* Details */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		DBB4E1D1296B4FBD00F27666 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DBB4E1D3296B512100F27666 /* BaseViewModels */,
+				DBB4E1D2296B50CE00F27666 /* SplashScreenViewModel */,
+				DB5660D429698B76002046F0 /* HomeViewModels */,
+				DB5660D629698BCB002046F0 /* DetailsViewModels */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		DBB4E1D2296B50CE00F27666 /* SplashScreenViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				DB5660B129677F89002046F0 /* SplashScreenViewModel.swift */,
+			);
+			path = SplashScreenViewModel;
+			sourceTree = "<group>";
+		};
+		DBB4E1D3296B512100F27666 /* BaseViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				DB5660AA296776F8002046F0 /* BaseViewModel.swift */,
+				DB5660C82968D158002046F0 /* BaseCellViewModel.swift */,
+			);
+			path = BaseViewModels;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -771,7 +800,6 @@
 				DB56608929675C46002046F0 /* Environment.swift in Sources */,
 				DB5660E429699CDC002046F0 /* DescriptionTableViewModel.swift in Sources */,
 				DB5660C92968D158002046F0 /* BaseCellViewModel.swift in Sources */,
-				DB5660EA2969CB1A002046F0 /* Observable.swift in Sources */,
 				DB5660CF2968E29C002046F0 /* UIImageView+extension.swift in Sources */,
 				DB5660DD296990F9002046F0 /* InfoTableViewModel.swift in Sources */,
 				DB5660BA29683271002046F0 /* ApiCall.swift in Sources */,

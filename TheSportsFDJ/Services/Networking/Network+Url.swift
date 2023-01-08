@@ -30,6 +30,7 @@ extension NetworkUrl {
             else {
                 throw Network.Error.encodingError
         }
+        print("=================# API Request #=================\n")
         print("****** Request Path: ", urlString)
         print("****** Request Method: ", method)
         print("****** Request Headers: ", headers)
