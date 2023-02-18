@@ -1,1 +1,1 @@
-# TheSportsDB
+# TheSports
