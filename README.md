@@ -1,3 +1,3 @@
 # TheSports
 
-Including Unit Tests
+TheSports with MVVM architecture and Unit Tests
