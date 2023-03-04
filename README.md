@@ -1,3 +1,3 @@
 # TheSports
 
-TheSports with MVVM architecture and Unit Tests
+Gaming with MVVM architecture and Unit Tests
